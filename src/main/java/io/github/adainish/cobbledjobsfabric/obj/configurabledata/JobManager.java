@@ -8,6 +8,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.HashMap;
 
@@ -42,30 +43,30 @@ public class JobManager
                             switch (i)
                             {
                                 case 0 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.STONE);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.STONE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 1 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.DIAMOND_ORE);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.DIAMOND_ORE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 2 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.ANDESITE);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.ANDESITE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 3 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.COBBLESTONE);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.COBBLESTONE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 4 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.GOLD_ORE);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.GOLD_ORE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 5 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.IRON_ORE);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.IRON_ORE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
 
@@ -433,33 +434,32 @@ public class JobManager
                             switch (i)
                             {
                                 case 0 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.ACACIA_LOG);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.ACACIA_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 1 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.BIRCH_LOG);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.BIRCH_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 2 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.OAK_LOG);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.OAK_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 3 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.DARK_OAK_LOG);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.DARK_OAK_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 4 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.MANGROVE_LOG);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.MANGROVE_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 5 -> {
-                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.SPRUCE_LOG);
+                                    ResourceLocation location = BuiltInRegistries.BLOCK.getKey(Blocks.SPRUCE_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
-
                             }
                             jobType.actionKeys.put(actionKey.actionKey, actionKey);
                         }
