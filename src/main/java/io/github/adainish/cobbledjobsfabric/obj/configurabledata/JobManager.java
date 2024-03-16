@@ -4,6 +4,7 @@ import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
 import io.github.adainish.cobbledjobsfabric.enumerations.DefaultJobs;
 import io.github.adainish.cobbledjobsfabric.enumerations.JobAction;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
@@ -41,30 +42,30 @@ public class JobManager
                             switch (i)
                             {
                                 case 0 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.STONE);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.STONE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 1 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.DIAMOND_ORE);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.DIAMOND_ORE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 2 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.ANDESITE);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.ANDESITE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 3 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.COBBLESTONE);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.COBBLESTONE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 4 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.GOLD_ORE);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.GOLD_ORE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 5 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.IRON_ORE);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.IRON_ORE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
 
@@ -91,30 +92,30 @@ public class JobManager
                             {
                                 case 0 -> {
 
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.BLAZE);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.BLAZE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 1 -> {
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.ZOMBIE);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.ZOMBIE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 2 -> {
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.SKELETON);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.SKELETON);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 3 -> {
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.CREEPER);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.CREEPER);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 4 -> {
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.ENDERMAN);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.ENDERMAN);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 5 -> {
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.SPIDER);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.SPIDER);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
 
@@ -174,30 +175,30 @@ public class JobManager
                             switch (i)
                             {
                                 case 0 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.BIRCH_BOAT);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.BIRCH_BOAT);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 1 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.IRON_AXE);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.IRON_AXE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 2 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.IRON_SHOVEL);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.IRON_SHOVEL);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 3 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.IRON_SWORD);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.IRON_SWORD);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 4 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.IRON_PICKAXE);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.IRON_PICKAXE);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 5 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.IRON_BLOCK);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.IRON_BLOCK);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
 
@@ -309,30 +310,30 @@ public class JobManager
                             {
                                 case 0 -> {
 
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.COD);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.COD);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 1 -> {
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.SALMON);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.SALMON);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 2 -> {
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.TROPICAL_FISH);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.TROPICAL_FISH);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 3 -> {
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.FROG);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.FROG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 4 -> {
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.DOLPHIN);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.DOLPHIN);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 5 -> {
-                                    ResourceLocation location = Registry.ENTITY_TYPE.getKey(EntityType.PUFFERFISH);
+                                    ResourceLocation location = BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.PUFFERFISH);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
 
@@ -349,30 +350,30 @@ public class JobManager
                             switch (i)
                             {
                                 case 0 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.ACACIA_LOG);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.ACACIA_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 1 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.SALMON);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.SALMON);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 2 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.NAUTILUS_SHELL);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.NAUTILUS_SHELL);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 3 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.TROPICAL_FISH);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.TROPICAL_FISH);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 4 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.PUFFERFISH);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.PUFFERFISH);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 5 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.COD);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.COD);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
 
@@ -432,30 +433,30 @@ public class JobManager
                             switch (i)
                             {
                                 case 0 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.ACACIA_LOG);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.ACACIA_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 1 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.BIRCH_LOG);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.BIRCH_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 2 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.OAK_LOG);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.OAK_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                     break;
                                 }
                                 case 3 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.DARK_OAK_LOG);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.DARK_OAK_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 4 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.MANGROVE_LOG);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.MANGROVE_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
                                 case 5 -> {
-                                    ResourceLocation location = Registry.ITEM.getKey(Items.SPRUCE_LOG);
+                                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(Items.SPRUCE_LOG);
                                     actionKey.actionKey = location.toString().toLowerCase();
                                 }
 

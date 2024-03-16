@@ -1,16 +1,19 @@
 package io.github.adainish.cobbledjobsfabric.listener;
 
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
-import dev.architectury.event.Event;
-import dev.architectury.event.events.common.PlayerEvent;
+import io.github.adainish.cabled.events.EntityFishingRodCallback;
+import io.github.adainish.cabled.events.PlayerCraftCallback;
 import io.github.adainish.cobbledjobsfabric.enumerations.JobAction;
 import io.github.adainish.cobbledjobsfabric.obj.data.Player;
 import io.github.adainish.cobbledjobsfabric.storage.PlayerStorage;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -29,46 +32,49 @@ public class FabricActionListener
     public void registerFishing()
     {
 
-//        Bobb
-//        PlayerEvent.B.register((serverPlayer, constructed, inventory) -> {
-//            if (constructed == null)
-//                return;
-//
-//            if (constructed.isEmpty())
-//                return;
-//            try {
-//                Player player = PlayerStorage.getPlayer(serverPlayer.getUUID());
-//                if (player != null) {
-//                    //update job data for mining
-//
-//                    ResourceLocation location = Registry.ITEM.getKey(constructed.getItem());
-//                    player.updateJobData(JobAction.Craft, location.toString());
-//                    player.updateCache();
-//                }
-//            } catch (Exception e) {
-//
-//            }
-//        });
+        EntityFishingRodCallback.EVENT.register((fishingHook, entity, player) -> {
+            if (fishingHook == null)
+                return InteractionResult.PASS;
+            if (fishingHook.isInWater())
+            {
+                ItemStack stack = player.getMainHandItem();
+                if (stack.getItem() instanceof net.minecraft.world.item.FishingRodItem)
+                {
+                    try {
+                        Player p = PlayerStorage.getPlayer(player.getUUID());
+                        if (p != null)
+                        {
+                            String update = "fishing_rod";
+                            if (entity instanceof PokemonEntity)
+                                update = ((PokemonEntity) entity).getPokemon().getSpecies().getResourceIdentifier().toString();
+                            if (entity instanceof ItemEntity itemEntity)
+                                update = BuiltInRegistries.ITEM.getKey(itemEntity.getItem().getItem()).toString();
+                            p.updateJobData(JobAction.Fish, update);
+                            p.updateCache();
+                        }
+                    } catch (Exception e)
+                    {
+
+                    }
+                }
+            }
+            return InteractionResult.PASS;
+        });
     }
 
     public void registerCrafting()
     {
-        PlayerEvent.CRAFT_ITEM.register((serverPlayer, constructed, inventory) -> {
-            if (constructed == null)
-                return;
-
-            if (constructed.isEmpty())
-                return;
+        PlayerCraftCallback.EVENT.register((world, player, stack, amount) -> {
             try {
-                Player player = PlayerStorage.getPlayer(serverPlayer.getUUID());
-                if (player != null) {
-                    //update job data for mining
-
-                    ResourceLocation location = Registry.ITEM.getKey(constructed.getItem());
-                    player.updateJobData(JobAction.Craft, location.toString());
-                    player.updateCache();
+                Player p = PlayerStorage.getPlayer(player.getUUID());
+                if (p != null)
+                {
+                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(stack.getItem());
+                    p.updateJobData(JobAction.Craft, location.toString());
+                    p.updateCache();
                 }
-            } catch (Exception e) {
+            } catch (Exception e)
+            {
 
             }
         });
@@ -86,7 +92,7 @@ public class FabricActionListener
                     //update job data for mining
 
                     Block block = blockEntity.getBlockState().getBlock();
-                    ResourceLocation location = Registry.ITEM.getKey(block.asItem());
+                    ResourceLocation location = BuiltInRegistries.ITEM.getKey(block.asItem());
                     player.updateJobData(JobAction.Mine, location.toString());
                     player.updateCache();
                 }
@@ -113,7 +119,7 @@ public class FabricActionListener
                         {
                             location = ((PokemonEntity) killedEntity).getPokemon().getSpecies().getResourceIdentifier();
                         } else {
-                            location = Registry.ENTITY_TYPE.getKey(entity.getType());
+                            location = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
                         }
                         player.updateJobData(JobAction.Kill, location.toString());
                         player.updateCache();

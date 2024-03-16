@@ -3,7 +3,7 @@ package io.github.adainish.cobbledjobsfabric.obj.data;
 import io.github.adainish.cobbledjobsfabric.CobbledJobsFabric;
 import io.github.adainish.cobbledjobsfabric.obj.configurabledata.ConfigurableJob;
 
-import javax.annotation.Nullable;
+
 
 
 public class Job
@@ -65,7 +65,6 @@ public class Job
         return false;
     }
 
-    @Nullable
     public ConfigurableJob getConfigurableJob()
     {
         if (CobbledJobsFabric.jobsConfig.jobManager.configurableJobs.containsKey(jobName)) {

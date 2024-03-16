@@ -2,6 +2,7 @@ package io.github.adainish.cobbledjobsfabric.subscriptions;
 
 import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
+import com.cobblemon.mod.common.platform.events.PlatformEvents;
 import io.github.adainish.cobbledjobsfabric.enumerations.JobAction;
 import io.github.adainish.cobbledjobsfabric.obj.data.Player;
 import io.github.adainish.cobbledjobsfabric.storage.PlayerStorage;
@@ -79,17 +80,17 @@ public class EventSubscriptions
 
     public void subscribeToPlayerLogin()
     {
-        CobblemonEvents.PLAYER_JOIN.subscribe(Priority.NORMAL, event -> {
+        PlatformEvents.SERVER_PLAYER_LOGIN.subscribe(Priority.NORMAL, event -> {
 
 
-            Player player = PlayerStorage.getPlayer(event.getUUID());
+            Player player = PlayerStorage.getPlayer(event.getPlayer().getUUID());
             if (player == null) {
-                PlayerStorage.makePlayer(event);
-                player = PlayerStorage.getPlayer(event.getUUID());
+                PlayerStorage.makePlayer(event.getPlayer());
+                player = PlayerStorage.getPlayer(event.getPlayer().getUUID());
             }
 
             if (player != null) {
-                player.userName = event.getName().plainCopy().toString();
+                player.userName = event.getPlayer().getName().plainCopy().toString();
                 player.syncWithJobManager();
                 player.updateCache();
             }
@@ -100,8 +101,8 @@ public class EventSubscriptions
 
     public void subscribeToPlayerLogout()
     {
-        CobblemonEvents.PLAYER_QUIT.subscribe(Priority.NORMAL, event -> {
-            Player player = PlayerStorage.getPlayer(event.getUUID());
+        PlatformEvents.SERVER_PLAYER_LOGOUT.subscribe(Priority.NORMAL, event -> {
+            Player player = PlayerStorage.getPlayer(event.getPlayer().getUUID());
             if (player != null) {
                 player.save();
             }

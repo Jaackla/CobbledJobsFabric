@@ -21,6 +21,7 @@ import io.github.adainish.cobbledjobsfabric.storage.PlayerStorage;
 import io.github.adainish.cobbledjobsfabric.util.EconomyUtil;
 import io.github.adainish.cobbledjobsfabric.util.Util;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -261,12 +262,13 @@ public class Player {
             ResourceLocation location = ResourceLocation.tryParse(actionKey.actionKey);
             if (location == null)
                 continue;
-            ItemStack stack = new ItemStack(Items.DIRT);
+            new ItemStack(Items.DIRT);
+            ItemStack stack;
             if (PokemonSpecies.INSTANCE.getByIdentifier(location) != null)
             {
                 stack = Util.returnIcon(PokemonSpecies.INSTANCE.getByIdentifier(location).create(1));
             } else {
-                stack = new ItemStack(Registry.ITEM.get(location));
+                stack = new ItemStack(BuiltInRegistries.ITEM.get(location));
             }
             if (stack.isEmpty())
                 continue;

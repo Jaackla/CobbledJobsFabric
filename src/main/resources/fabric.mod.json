@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "cobbledjobsfabric",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "CobbledJobsFabric",
   "description": "Adds a jobs system for Cobblemon Fabric hooking into Impactor",
   "authors": [
@@ -19,8 +19,8 @@
     ]
   },
   "depends": {
-    "fabricloader": ">=0.14.18",
+    "fabricloader": ">=${loader_version}",
     "fabric": "*",
-    "minecraft": "1.19.2"
+    "minecraft": "${minecraft_version}"
   }
 }

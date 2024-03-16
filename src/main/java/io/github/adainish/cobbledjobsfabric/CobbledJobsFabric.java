@@ -3,6 +3,7 @@ package io.github.adainish.cobbledjobsfabric;
 import ca.landonjw.gooeylibs2.api.tasks.Task;
 import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
+import com.cobblemon.mod.common.platform.events.PlatformEvents;
 import io.github.adainish.cobbledjobsfabric.cmd.Command;
 import io.github.adainish.cobbledjobsfabric.config.JobsConfig;
 import io.github.adainish.cobbledjobsfabric.config.LanguageConfig;
@@ -87,8 +88,8 @@ public class CobbledJobsFabric implements ModInitializer {
                 .replace("%y", YEAR)
         );
         //do data set up
-        CobblemonEvents.SERVER_STARTED.subscribe(Priority.NORMAL, minecraftServer -> {
-            setServer(minecraftServer);
+        PlatformEvents.SERVER_STARTED.subscribe(Priority.NORMAL, event -> {
+            setServer(event.getServer());
             //init subscriptions
             eventSubscriptions = new EventSubscriptions();
             //register fabric events
