@@ -6,7 +6,6 @@ import io.github.adainish.cabled.events.PlayerCraftCallback;
 import io.github.adainish.cobbledjobsfabric.CobbledJobsFabric;
 import io.github.adainish.cobbledjobsfabric.enumerations.JobAction;
 import io.github.adainish.cobbledjobsfabric.obj.data.Player;
-import io.github.adainish.cobbledjobsfabric.storage.PlayerStorage;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -38,7 +37,7 @@ public class FabricActionListener
             if (stack.getItem() instanceof net.minecraft.world.item.FishingRodItem) {
                 CobbledJobsFabric.getLog().info("Fishing rod event 4");
                 try {
-                    Player p = PlayerStorage.getPlayer(player.getUUID());
+                    Player p = CobbledJobsFabric.instance.playerStorage.getPlayer(player.getUUID());
                     if (p != null) {
                         CobbledJobsFabric.getLog().info("Fishing rod event 5");
                         String update = "fishing_rod";
@@ -64,7 +63,7 @@ public class FabricActionListener
     {
         PlayerCraftCallback.EVENT.register((world, player, stack, amount) -> {
             try {
-                Player p = PlayerStorage.getPlayer(player.getUUID());
+                Player p = CobbledJobsFabric.instance.playerStorage.getPlayer(player.getUUID());
                 if (p != null)
                 {
                     ResourceLocation location = BuiltInRegistries.ITEM.getKey(stack.getItem());
@@ -83,7 +82,7 @@ public class FabricActionListener
             if (world.isClientSide())
                 return;
             try {
-                Player player = PlayerStorage.getPlayer(serverPlayer.getUUID());
+                Player player = CobbledJobsFabric.instance.playerStorage.getPlayer(serverPlayer.getUUID());
                 if (player != null) {
                     //update job data for mining
                     Block block = state.getBlock();
@@ -105,7 +104,7 @@ public class FabricActionListener
             if (entity instanceof ServerPlayer)
             {
                 try {
-                    Player player = PlayerStorage.getPlayer(entity.getUUID());
+                    Player player = CobbledJobsFabric.instance.playerStorage.getPlayer(entity.getUUID());
                     if (player != null)
                     {
                         //update job data for killing

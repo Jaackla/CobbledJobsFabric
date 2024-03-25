@@ -14,7 +14,7 @@ public class Command
         return Commands.literal("jobs")
                 .executes(cc -> {
                     try {
-                        Player player = PlayerStorage.getPlayer(cc.getSource().getPlayerOrException().getUUID());
+                        Player player = CobbledJobsFabric.instance.playerStorage.getPlayer(cc.getSource().getPlayerOrException().getUUID());
                         if (player != null)
                         {
                             player.viewGUI(cc.getSource().getPlayer());

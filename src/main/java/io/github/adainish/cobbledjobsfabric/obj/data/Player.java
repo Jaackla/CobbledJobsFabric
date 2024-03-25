@@ -11,6 +11,7 @@ import ca.landonjw.gooeylibs2.api.page.GooeyPage;
 import ca.landonjw.gooeylibs2.api.page.LinkedPage;
 import ca.landonjw.gooeylibs2.api.template.types.ChestTemplate;
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
+import com.google.gson.Gson;
 import io.github.adainish.cobbledjobsfabric.CobbledJobsFabric;
 import io.github.adainish.cobbledjobsfabric.enumerations.JobAction;
 import io.github.adainish.cobbledjobsfabric.obj.configurabledata.ActionKey;
@@ -18,14 +19,15 @@ import io.github.adainish.cobbledjobsfabric.obj.configurabledata.ConfigurableJob
 import io.github.adainish.cobbledjobsfabric.obj.configurabledata.ConfigurableLevel;
 import io.github.adainish.cobbledjobsfabric.obj.configurabledata.JobType;
 import io.github.adainish.cobbledjobsfabric.storage.PlayerStorage;
+import io.github.adainish.cobbledjobsfabric.util.Adapters;
 import io.github.adainish.cobbledjobsfabric.util.EconomyUtil;
 import io.github.adainish.cobbledjobsfabric.util.Util;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import org.bson.Document;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -41,6 +43,13 @@ public class Player {
         this.uuid = uuid;
     }
 
+    public Document toDocument() {
+        Gson gson  = Adapters.PRETTY_MAIN_GSON;
+        String json = gson.toJson(this);
+        return Document.parse(json);
+    }
+
+
     public void sendMessage(String message) {
         //check if online
         if (Util.isOnline(uuid)) {
@@ -54,7 +63,7 @@ public class Player {
 
     public void save() {
         //save to storage file
-        PlayerStorage.savePlayer(this);
+        CobbledJobsFabric.instance.playerStorage.savePlayer(this);
     }
 
     public void viewGUI(ServerPlayer serverPlayer)
