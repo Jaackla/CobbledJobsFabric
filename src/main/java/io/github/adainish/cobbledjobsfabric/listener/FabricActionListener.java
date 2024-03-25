@@ -3,6 +3,7 @@ package io.github.adainish.cobbledjobsfabric.listener;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import io.github.adainish.cabled.events.EntityFishingRodCallback;
 import io.github.adainish.cabled.events.PlayerCraftCallback;
+import io.github.adainish.cobbledjobsfabric.CobbledJobsFabric;
 import io.github.adainish.cobbledjobsfabric.enumerations.JobAction;
 import io.github.adainish.cobbledjobsfabric.obj.data.Player;
 import io.github.adainish.cobbledjobsfabric.storage.PlayerStorage;
@@ -24,36 +25,35 @@ public class FabricActionListener
         registerKilling();
         registerCrafting();
         registerMining();
-        registerFishing();
+//        registerFishing();
     }
 
-    public void registerFishing()
-    {
+    public void registerFishing() {
 
         EntityFishingRodCallback.EVENT.register((fishingHook, entity, player) -> {
             if (fishingHook == null)
                 return InteractionResult.PASS;
-            if (fishingHook.isInWater())
-            {
-                ItemStack stack = player.getMainHandItem();
-                if (stack.getItem() instanceof net.minecraft.world.item.FishingRodItem)
-                {
-                    try {
-                        Player p = PlayerStorage.getPlayer(player.getUUID());
-                        if (p != null)
-                        {
-                            String update = "fishing_rod";
-                            if (entity instanceof PokemonEntity)
-                                update = ((PokemonEntity) entity).getPokemon().getSpecies().getResourceIdentifier().toString();
-                            if (entity instanceof ItemEntity itemEntity)
-                                update = BuiltInRegistries.ITEM.getKey(itemEntity.getItem().getItem()).toString();
-                            p.updateJobData(JobAction.Fish, update);
-                            p.updateCache();
-                        }
-                    } catch (Exception e)
-                    {
-
+            CobbledJobsFabric.getLog().info("Fishing rod event 3");
+            ItemStack stack = player.getMainHandItem();
+            if (stack.getItem() instanceof net.minecraft.world.item.FishingRodItem) {
+                CobbledJobsFabric.getLog().info("Fishing rod event 4");
+                try {
+                    Player p = PlayerStorage.getPlayer(player.getUUID());
+                    if (p != null) {
+                        CobbledJobsFabric.getLog().info("Fishing rod event 5");
+                        String update = "fishing_rod";
+                        if (entity instanceof PokemonEntity)
+                            update = ((PokemonEntity) entity).getPokemon().getSpecies().getResourceIdentifier().toString();
+                        if (entity instanceof ItemEntity itemEntity)
+                            update = BuiltInRegistries.ITEM.getKey(itemEntity.getItem().getItem()).toString();
+                        CobbledJobsFabric.getLog().info("Fishing rod event 6");
+                        //print update
+                        CobbledJobsFabric.getLog().info(update);
+                        p.updateJobData(JobAction.Fish, update);
+                        p.updateCache();
                     }
+                } catch (Exception e) {
+
                 }
             }
             return InteractionResult.PASS;
