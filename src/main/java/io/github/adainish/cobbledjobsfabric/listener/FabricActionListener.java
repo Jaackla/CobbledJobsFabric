@@ -29,23 +29,20 @@ public class FabricActionListener
 
     public void registerFishing() {
 
+        //TODO: Fix this by writing a mixin that can retrieve the itemstack of the loot being reeled in
         EntityFishingRodCallback.EVENT.register((fishingHook, entity, player) -> {
             if (fishingHook == null)
                 return InteractionResult.PASS;
-            CobbledJobsFabric.getLog().info("Fishing rod event 3");
             ItemStack stack = player.getMainHandItem();
             if (stack.getItem() instanceof net.minecraft.world.item.FishingRodItem) {
-                CobbledJobsFabric.getLog().info("Fishing rod event 4");
                 try {
                     Player p = CobbledJobsFabric.instance.playerStorage.getPlayer(player.getUUID());
                     if (p != null) {
-                        CobbledJobsFabric.getLog().info("Fishing rod event 5");
                         String update = "fishing_rod";
                         if (entity instanceof PokemonEntity)
                             update = ((PokemonEntity) entity).getPokemon().getSpecies().getResourceIdentifier().toString();
                         if (entity instanceof ItemEntity itemEntity)
                             update = BuiltInRegistries.ITEM.getKey(itemEntity.getItem().getItem()).toString();
-                        CobbledJobsFabric.getLog().info("Fishing rod event 6");
                         //print update
                         CobbledJobsFabric.getLog().info(update);
                         p.updateJobData(JobAction.Fish, update);
