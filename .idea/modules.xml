@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CobbledJobsFabric.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CobbledJobsFabric.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CobbledJobsFabric.test.iml" filepath="$PROJECT_DIR$/.idea/modules/CobbledJobsFabric.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Return.CobbledJobsFabric.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Return.CobbledJobsFabric.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.adainish.CobbledJobsFabric.main.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.adainish.CobbledJobsFabric.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.adainish.CobbledJobsFabric.test.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.adainish.CobbledJobsFabric.test.iml" />
     </modules>
   </component>

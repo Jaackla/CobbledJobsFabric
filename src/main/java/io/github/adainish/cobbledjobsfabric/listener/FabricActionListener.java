@@ -11,9 +11,11 @@ import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.block.Block;
 
 public class FabricActionListener
@@ -78,6 +80,13 @@ public class FabricActionListener
         PlayerBlockBreakEvents.AFTER.register((world, serverPlayer, pos, state, blockEntity) -> {
             if (world.isClientSide())
                 return;
+            if (!serverPlayer.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
+                if (serverPlayer.getMainHandItem().isEnchanted()) {
+                    //check if the player has silk touch
+                    if (EnchantmentHelper.hasSilkTouch(serverPlayer.getMainHandItem()))
+                        return;
+                }
+            }
             try {
                 Player player = CobbledJobsFabric.instance.playerStorage.getPlayer(serverPlayer.getUUID());
                 if (player != null) {
